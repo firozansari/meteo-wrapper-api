@@ -23,7 +23,7 @@ This project acts as a middleware that simplifies the complex Open-Meteo API res
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/firozansari/meteo-wrapper-api.git
     cd meteo-wrapper-api
     ```
 
