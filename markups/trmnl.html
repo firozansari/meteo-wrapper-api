@@ -1,0 +1,312 @@
+<link rel="stylesheet" href="http://erikflowers.github.io/weather-icons/css/weather-icons.css">
+
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      font-family: "Inter Variable", Inter;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-rows: 45% 55%;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0px;
+      width: 100%;
+      height: 100%;
+      padding: 5px;
+    }
+
+    .main-grid>div {
+      /* border: 1px solid #000; */
+    }
+
+    .weathericon-container {
+      grid-row: 1;
+      grid-column: 1 / span 2;
+      padding-top: 15px;
+    }
+
+    .weathericon-container .weathericon {
+      font-size: 10em;      
+      font-weight: bold;
+    }
+
+    .temperature {
+      grid-row: 1;
+      grid-column: 3 / span 2;
+
+      position: relative;
+      display: inline-block;
+
+      font-size: 10em;
+      font-weight: normal;
+    }
+
+    .temperature .degree {
+      position: absolute;
+      font-size: 0.5em;
+      font-weight: bold;
+      top: 20px;
+    }
+
+    .others {
+      grid-row: 1;
+      grid-column: 5 / span 2;
+
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 33% 33% 33%;
+      gap: 0px;
+
+      font-size: 1.2em;
+      display: grid;
+    }
+
+    .others-grid {
+      display: grid;
+      grid-template-rows: 50% 50%;
+      gap: 6px;
+    }
+
+    .others-grid div {
+      /* border: 1px solid #666;  */
+    }
+
+    .others-grid .sap {
+      font-size: 0.6em;
+      color: #000;
+      vertical-align: middle;
+    }
+
+    .other-temperature-grid  {
+      font-size: 1.6em;
+    }
+    
+    .other-temperature-grid .sap {
+      margin: 0 5px 0 1px;
+      padding-bottom: 8px;
+    }
+
+    .others .value {
+      font-size: 1.9em;
+      font-weight: normal;
+      text-align: left;
+    }
+
+    .others .key {
+      font-size: 1.0em;
+      text-align: left;
+    }
+
+    .others .wind-direction {
+      font-size: 0.5em;
+      font-weight: normal;
+    }
+
+    .others .uv-index {
+      font-size: 0.5em;
+      font-weight: normal;
+    }
+
+    /* 
+    .day {
+      grid-row: 2;
+      grid-column: span 6;
+    } */
+
+    /* 
+    .cell {
+      grid-row: 2;
+    } */
+
+    .temperature-grid {
+      display: grid;
+      grid-template-columns: 45% 10% 45%;
+      align-items: center;
+      font-size: 1.6em;
+    }
+
+    .temperature-grid .sap {
+      margin: 0 2px;
+    }
+
+    .forecast-grid {
+      display: grid;
+      grid-template-rows: 10% 40% 14% 16% 16%;
+      gap: 3px;
+
+      margin-top: 10px;
+    }
+
+    .border {
+      border-top: 0px;
+      border-right: 0px;
+      border-bottom: 0px;
+      border-left: 1px solid #000;
+      padding-left: 5px;
+      padding-right: 5px;
+    }    
+
+    .forecast-grid .day {
+      grid-row: 1;
+      font-size: 1.6em;
+      text-align: center;
+    }
+
+    .forecast-grid .weathericon {
+      grid-row: 2;
+    }
+
+    .forecast-grid .temperature-grid {
+      grid-row: 3;
+
+      font-size: 2em;
+      text-align: center;
+    }
+
+    .forecast-grid .temperature-grid .sap {
+      font-size: 0.6em;
+      color: #000;
+      vertical-align: middle;
+    }
+
+
+    .forecast-grid .wind-direction-grid {
+      grid-row: 4;
+
+      font-size: 2em;
+      text-align: center;
+    }
+
+    .forecast-grid .wind-direction-grid .wind-direction {
+      font-size: 0.5em;
+      font-weight: normal;
+    }
+
+    .forecast-grid .uv-index-grid .weathericon,
+    .forecast-grid .wind-direction-grid .weathericon {
+      font-size: 0.7em;
+    }
+
+    .forecast-grid .uv-index-grid {
+      grid-row: 5;
+
+      font-size: 2em;
+      text-align: center;
+    }
+
+    .forecast-grid .uv-index-grid .uv-index {
+      font-size: 0.5em;
+      font-weight: normal;
+    }
+    .forecast-grid .uv-index-grid .percentage {
+      font-size: 0.8em;
+      font-weight: normal;
+    }
+
+    .forecast-grid .uv-index-grid .uv-sap {
+      font-size: 1em;
+      font-weight: normal;
+    }    
+
+    .forecast-grid .uv-index-grid .sap {
+      padding: 2px 5px;
+      vertical-align: middle;
+      font-size: 0.45em;
+      color: #000;
+    }
+
+    .forecast .weathericon {
+      font-size: 4em;
+    }
+
+    .forecast .temperature {
+      font-size: 2.8em;
+      margin-top: 0px;
+    }
+
+    .forecast .weathericon-grid {
+      display: grid;
+      place-items: center;
+      width: 100%;
+    }
+
+    /* .uv-index-sap {
+      font-size: 0.6em;
+      color: #000;
+      vertical-align: middle;
+    } */
+  </style> 
+
+  <div class="screen layout">
+    <div class="main-grid">
+      <!-- current weather -->
+      <div class="weathericon-container">
+        <span class="wi weathericon {{ current.weather_icon }}"></span>
+      </div>
+
+      <!-- current temprature -->
+      <div class="temperature">{{ current.temperature }}<span class="degree">°</span></div>
+
+      <!-- other information -->
+      <div class="others">
+        <div class="others-grid">
+          <div class="cell value">
+            <div class="other-temperature-grid">
+              <span>{{ current.today_temperature_max }}°</span><span class="sap">/</span><span>{{ current.today_temperature_min }}°</span>
+            </div>
+          </div>
+        </div>
+        <div class="others-grid">
+          <div class="cell value">
+
+          </div>
+          <span class="cell key"></span>
+        </div>
+        <div class="others-grid">
+          <div class="cell value">{{ current.feel_like }}°</div>
+          <div class="cell key">Feels like</div>
+        </div>
+        <div class="others-grid wind">
+          <div class="cell value">
+            {{ current.wind_speed }}<span class="wind-direction">WNW</span>
+          </div>
+          <div class="cell key">Wind</div>
+        </div>
+        <div class="others-grid">
+          <div class="cell value">{{ current.humidity }}%</div>
+          <span class="cell key">Humidity</span>
+        </div>
+        <div class="others-grid">
+          <div class="cell value">{{ current.uv_index }}<span class="uv-index">{{ current.uv_scale }}</span>
+          </div>
+          <span class="cell key">UV</span>
+        </div>
+      </div>
+
+      <!-- forecast -->
+      {% for f in forecast -%}
+      <div class="cell forecast-grid forecast border"
+        {%- if forloop.index == 1 -%}style="padding-right: 5px; border-left: 0px !important;"{%- endif -%}
+        >
+        <div class="day">{{ f.day }}</div>
+        <div class="cell weathericon-grid">
+          <span class="wi weathericon {{ f.weather_icon }}"></span>
+        </div>
+        <div class="cell temperature-grid">
+          <span>{{ f.temperature_max }}°</span>
+          <span class="sap">/</span>
+          <span>{{ f.temperature_min }}°</span>
+        </div>
+        <div class="cell wind-direction-grid">
+          <span class="wi weathericon wi-strong-wind"></span>
+          {{ f.wind_speed }}<span class="wind-direction">{{ f.wind_direction }}</span>
+        </div>
+        <div class="cell uv-index-grid">
+          <span class="wi weathericon wi-humidity percentage"></span>
+          <span class="">{{ f.precipitation_probability }}</span><span class="uv-index">%</span>
+        </div>
+      </div>
+      {%- endfor %}
+    </div>
