@@ -254,7 +254,7 @@
         <div class="others-grid">
           <div class="cell value">
             <div class="other-temperature-grid">
-              <span>{{ current.today_temperature_max }}°</span><span class="sap">/</span><span>{{ current.today_temperature_min }}°</span>
+              <span>{{ current.today_temperature_min }}°</span><span class="sap">/</span><span>{{ current.today_temperature_max }}°</span>
             </div>
           </div>
         </div>
@@ -295,9 +295,9 @@
           <span class="wi weathericon {{ f.weather_icon }}"></span>
         </div>
         <div class="cell temperature-grid">
-          <span>{{ f.temperature_max }}°</span>
-          <span class="sap">/</span>
           <span>{{ f.temperature_min }}°</span>
+          <span class="sap">/</span>
+          <span>{{ f.temperature_max }}°</span>
         </div>
         <div class="cell wind-direction-grid">
           <span class="wi weathericon wi-strong-wind"></span>
