@@ -4,6 +4,8 @@ A specialized Next.js API wrapper designed to fetch, format, and serve weather d
 
 This project acts as a middleware that simplifies the complex Open-Meteo API response into a clean, display-ready JSON format, specifically tailored for the limited screen real estate and specific icon sets used by TRMNL devices.
 
+![TRMNL Weather Display](public/trmnl-01.jpg)
+
 ## 🚀 Features
 
 - **Open-Meteo Integration**: Fetches accurate forecast data without requiring an API key.
