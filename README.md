@@ -1,4 +1,4 @@
-# TRMNL Weather Office Wrapper
+# Meteo Wrapper API
 
 A specialized Next.js API wrapper designed to fetch, format, and serve weather data from [Open-Meteo](https://open-meteo.com/) for [TRMNL](https://usetrmnl.com/) e-ink displays.
 

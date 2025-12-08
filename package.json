@@ -1,5 +1,5 @@
 {
-  "name": "trmnl-weather-office",
+  "name": "meteo-wrapper-api",
   "version": "0.1.0",
   "private": true,
   "scripts": {
