@@ -140,7 +140,7 @@ To use this with your TRMNL device:
 2.  Configure your TRMNL plugin to fetch data from your deployed `/api/weather` endpoint.
 3.  Use the content of `markups/trmnl.html` as your view template in the TRMNL dashboard, ensuring the variable names match the JSON response structure (e.g., `{{current.temperature}}`).
 
-![TRMNL Preview](public/trmnl-02.jpg)
+![TRMNL Preview](public/trmnl-02.png)
 
 ## 🔧 Advanced Configuration
 
